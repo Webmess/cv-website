@@ -1,0 +1,18 @@
+{
+    "configurations": [
+        {
+            "name": "Attach to Edge",
+            "port": 9222,
+            "request": "attach",
+            "type": "msedge",
+            "webRoot": "C:\Users\MAKHWITING MORONGWA\Documents\GitHub\cv-website\main.html"
+        },
+    {
+        "name": "Launch Edge",
+        "request": "launch",
+        "type": "msedge",
+        "url": "http://localhost:8080",
+        "webRoot": "${workspaceFolder}"
+    }
+    ]
+}
