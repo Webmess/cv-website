@@ -1,23 +1,52 @@
 <!DOCTYPE html>
-    <head>
-        <title>Skills</title>
-    </head>
-    <body>
-        <h2>Skills</h2>
-        <h3>Technical Skills</h3>
-       <ul>
+<html>
+<head>
+  <title>Skills</title>
+</head>
+<body>
+  <h2>Skills</h2>
+  <h3>Technical Skills</h3>
+  <ul id="technical-skills-list">
+    <ul>
         <li>Programming Languages: C++, Python, HTML, CSS</li>
         <li>Web Development: Frontend(HTML, CSS, JavaScript), Backend (Node.js)</li>
         <li>Database Management: MySQL</li>
         <li>Problem Solving: Data Structures and Algorithms</li>
     </ul>
-        <h3>Soft Skills</h3>
-        <ul>
-            <li>Teamwork</li>
-            <li>Communication</li>
-            <li>Time Management</li>
-            <li>Adaptability</li>
-            <li>Critical Thinking</li>
-        </ul>
-    </body>
+  </ul>
+  <h3>Soft Skills</h3>
+  <ul id="soft-skills-list">
+    <ul>
+        <li>Teamwork</li>
+        <li>Communication</li>
+        <li>Time Management</li>
+        <li>Adaptability</li>
+        <li>Critical Thinking</li>
+    </ul>
+  </ul>
+  <script>
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', 'skills.php', true);
+    xhr.onload = function() {
+      if (xhr.status === 200) {
+        const skills = JSON.parse(xhr.responseText);
+        const technicalSkillsList = document.getElementById('technical-skills-list');
+        const softSkillsList = document.getElementById('soft-skills-list');
+
+        skills.technicalSkills.forEach(skill => {
+          const listItem = document.createElement('li');
+          listItem.textContent = skill;
+          technicalSkillsList.appendChild(listItem);
+        });
+
+        skills.softSkills.forEach(skill => {
+          const listItem = document.createElement('li');
+          listItem.textContent = skill;
+          softSkillsList.appendChild(listItem);
+        });
+      }
+    };
+    xhr.send();
+  </script>
+</body>
 </html>
